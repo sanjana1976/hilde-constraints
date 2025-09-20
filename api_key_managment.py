@@ -7,13 +7,8 @@ def setup_api_key():
     
     api_key = None
     
-    # Check command-line argument
-    if len(sys.argv) > 1:
-        api_key = sys.argv[1]
-        print("API key provided via command line.")
-    
-    # ELSE check environment variable
-    elif os.environ.get("OPENAI_API_KEY"):
+    #check environment variable
+    if os.environ.get("OPENAI_API_KEY"):
         api_key = os.environ.get("OPENAI_API_KEY")
         print("API key found in environment variables.")
     
