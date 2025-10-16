@@ -1,11 +1,11 @@
+HILDE Constraint Layer: Dynamic Security Validation
 This project is an extension of the HILDE (Human-in-the-Loop Decoding) , implementing a dynamic security and quality constraint layer for LLM-generated code.
 
 The original HILDE system focuses on real-time interactive decision-making by highlighting critical tokens and offering secure alternatives to the user. This extension adds a post-generation validation system that automatically checks the completed code snippet against a set of dynamic, user-defined rules to ensure compliance with security policies and coding standards.
-
-
 It closes the loop by automatically validating the output of the completion model before the code is finalized and accepted.
-===========================================================================================================================================================================================================================================================================================================================
-Features::
+
+
+Features:
 
 Dynamic Constraint Translation: Converts natural language constraints (e.g., "don't allow while loops," "no function calls," "no imports") into formal, machine-readable rule specifications (JSON format) using a separate Large Language Model (LLM) for high-accuracy translation.
 
@@ -18,7 +18,9 @@ Flexible Rule Engine: Rules can be defined to check for specific AST node types 
 
 Code Generation Integration: Includes a simplified HiLDeLiteCompletionEngine using Qwen2.5-Coder-7B-Instruct for demonstration of the end-to-end code generation and validation pipeline.
 
-===========================================================================================================================================================================================================================================================================================================================Architecture and Flow
+
+
+Architecture and Flow:
 The system is composed of four main components that work together to enforce constraints:
 
 
