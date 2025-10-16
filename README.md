@@ -1,4 +1,7 @@
-HILDE Constraint Layer: Dynamic Security Validation
+#HILDE Constraint Layer: Dynamic Security Validation#
+
+
+
 This project is an extension of the HILDE (Human-in-the-Loop Decoding) , implementing a dynamic security and quality constraint layer for LLM-generated code.
 
 The original HILDE system focuses on real-time interactive decision-making by highlighting critical tokens and offering secure alternatives to the user. This extension adds a post-generation validation system that automatically checks the completed code snippet against a set of dynamic, user-defined rules to ensure compliance with security policies and coding standards.
@@ -33,25 +36,24 @@ CodeAnalyzer: The core validation component. It takes the generated code's AST a
 
 DynamicConstraintSystem: The orchestrator. It receives the user prompt and constraints, calls the Rule Translator, calls the Completion Engine, passes the resulting code to the Code Analyzer, and finally compiles and presents the summary of violations.
 
-=========================================================================================================================================================================================================================================================================================================================== Setup and Installation
 This project is implemented as a Python application, typically run within a Jupyter/Colab environment.
 An OpenAI API Key is required for the DynamicRuleTranslator component to function, as it relies on a powerful LLM to translate natural language constraints into structured rules.
 
-Initialize Engines (requires API keys and GPU for the completion model)
+1.Initialize Engines (requires API keys and GPU for the completion model)
 completion_engine = HiLDeLiteCompletionEngine()
 analysis_engine = CodeAnalyzer() # or a Mock for testing
 constraint_system = DynamicConstraintSystem(completion_engine, analysis_engine)
 
-# 2. Define the code prompt
+ 2. Define the code prompt
 prompt = "def process_data():"
 
-# 3. Define the user's security/style constraints in natural language
+ 3. Define the user's security/style constraints in natural language
 user_constraints= ["dont allow for loops"]
 
-# 4. Process the code with constraints
+ 4. Process the code with constraints
 result = constraint_system.process_code_with_constraints(prompt, user_constraints)
 
-# 5. Review the results
+ 5. Review the results
 print("=== RESULT ===")
 print(f"Generated Code:\n{result['completion']}\n")
 print(f"Rules Generated: {len(result['rule_specifications'])}")
