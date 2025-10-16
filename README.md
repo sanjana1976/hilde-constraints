@@ -31,26 +31,29 @@ Prerequisites
 An OpenAI API Key is required for the DynamicRuleTranslator component to function, as it relies on a powerful LLM to translate natural language constraints into structured rules.
 
 Workflow
-Initialize Engines (Requires API keys and GPU for the completion model)
+Initialize Engines (Requires API keys and GPU for the completion model):
 
 completion_engine = HiLDeLiteCompletionEngine()
 analysis_engine = CodeAnalyzer() # or a Mock for testing
 constraint_system = DynamicConstraintSystem(completion_engine, analysis_engine)
-Define the Code Prompt
 
+
+Define the Code Prompt:
 
 prompt = "def process_data():"
-
 Define the User's Security/Style Constraints in natural language
 
-user_constraints = ["dont allow for loops"]
-Process the Code with Constraints
+Python
 
+user_constraints = ["dont allow for loops"]
+
+
+Process the Code with Constraints:
 
 result = constraint_system.process_code_with_constraints(prompt, user_constraints)
 
+Review the Results:
 
-Review the Results
 
 
 print("=== RESULT ===")
