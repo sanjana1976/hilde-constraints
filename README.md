@@ -91,7 +91,7 @@ print(f"Rules Generated: {len(result['rule_specifications'])}")
 
 for spec in result['rule_specifications']:
 
-    print(f" - {spec['rule_name']}: {spec['ast_node_type']}")
+print(f" - {spec['rule_name']}: {spec['ast_node_type']}")
     
 print(f"Violations Found: {result['violation_count']}")
 
