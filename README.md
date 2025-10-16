@@ -18,7 +18,12 @@ Flexible Rule Engine: Rules can be defined to check for specific AST node types 
 
 Code Generation Integration: Includes a simplified HiLDeLiteCompletionEngine using Qwen2.5-Coder-7B-Instruct for demonstration of the end-to-end code generation and validation pipeline.
 
-Architecture and Flow
+
+
+
+Architecture and Flow:
+
+
 The system is composed of four main components that work together to enforce constraints:
 
 HiLDeLiteCompletionEngine: A simplified LLM-based engine (Here it's Qwen2.5-Coder-7B) that generates the initial code completion from a given prompt.
@@ -29,42 +34,66 @@ CodeAnalyzer: The core validation component. It takes the generated code's AST a
 
 DynamicConstraintSystem: The orchestrator. It receives the user prompt and constraints, calls the Rule Translator, calls the Completion Engine, passes the resulting code to the Code Analyzer, and finally compiles and presents the summary of violations.
 
-Usage Example
-This project is implemented as a Python application, typically run within a Jupyter/Colab environment.
 
-Prerequisites
+
+
+Prerequisites:
+
 An OpenAI API Key is required for the DynamicRuleTranslator component to function, as it relies on a powerful LLM to translate natural language constraints into structured rules.
+
+
+
 
 Workflow
 Initialize Engines (Requires API keys and GPU for the completion model):
 
 completion_engine = HiLDeLiteCompletionEngine()
+
 analysis_engine = CodeAnalyzer() # or a Mock for testing
+
 constraint_system = DynamicConstraintSystem(completion_engine, analysis_engine)
+
+
 
 
 Define the Code Prompt:
 
 prompt = "def process_data():"
+
 Define the User's Security/Style Constraints in natural language
 
-Python
+
+
 
 user_constraints = ["dont allow for loops"]
+
+
 
 
 Process the Code with Constraints:
 
 result = constraint_system.process_code_with_constraints(prompt, user_constraints)
 
+
+
 Review the Results:
 
 
 
+
+
 print("=== RESULT ===")
+
 print(f"Generated Code:\n{result['completion']}\n")
+
+
 print(f"Rules Generated: {len(result['rule_specifications'])}")
+
 for spec in result['rule_specifications']:
+
     print(f" - {spec['rule_name']}: {spec['ast_node_type']}")
+    
 print(f"Violations Found: {result['violation_count']}")
+
 print(f"Summary:\n{result['summary']}"
+
