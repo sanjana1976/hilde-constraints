@@ -1,5 +1,10 @@
 
 HILDE Constraint Layer: Dynamic Security Validation
+
+
+
+
+
 This project is an extension of the HILDE (Human-in-the-Loop Decoding) concept, implementing a dynamic security and quality constraint layer for LLM-generated code.
 
 The original HILDE system focuses on real-time interactive decision-making by highlighting critical tokens and offering secure alternatives to the user. This extension adds a post-generation validation system that automatically checks the completed code snippet against a set of dynamic, user-defined rules to ensure compliance with security policies and coding standards. It closes the loop by automatically validating the output of the completion model before the code is finalized and accepted.
